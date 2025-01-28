@@ -1,0 +1,91 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<!--
+MathPlotter - 前端模板
+作者: liqian_liukaining
+日期: 2025-01-28
+-->
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathPlotter - 函数可视化</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>MathPlotter</h1>
+        <p>数学函数可视化工具 v1.1</p>
+    </header>
+
+    <main class="container">
+        <!-- 控制面板 -->
+        <section class="control-panel">
+            <form method="POST">
+                <div class="form-group">
+                    <label>函数表达式：</label>
+                    <input type="text" name="formula"
+                           placeholder="示例: sin(x)*exp(-x/5)"
+                           value="{{ form_data.formula }}"
+                           required>
+                </div>
+
+                <div class="range-group">
+                    <div class="range-item">
+                        <label>X最小值:</label>
+                        <input type="number" name="x_min"
+                               value="{{ form_data.x_min }}"
+                               step="any">
+                    </div>
+                    <div class="range-item">
+                        <label>X最大值:</label>
+                        <input type="number" name="x_max"
+                               value="{{ form_data.x_max }}"
+                               step="any">
+                    </div>
+                </div>
+
+                <button type="submit">生成图像</button>
+            </form>
+
+            <!-- 错误提示 -->
+            {% if error %}
+            <div class="error-box">
+                <span class="error-icon">⚠️</span>
+                {{ error }}
+            </div>
+            {% endif %}
+
+            <!-- 使用说明 -->
+            <div class="instructions">
+                <h3>使用指南</h3>
+                <ul>
+                    <li>支持运算符：+ - * / ** ()</li>
+                    <li>支持函数：sin, cos, tan, sqrt, log, exp, abs</li>
+                    <li>示例：sqrt(x^2 + 1) → sqrt(x**2 + 1)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 可视化区域 -->
+        <section class="visualization">
+            <h2>函数图像</h2>
+            <div class="plot-area">
+                {% if plot_url %}
+                <img src="data:image/png;base64,{{ plot_url }}"
+                     alt="函数图像"
+                     class="plot-image">
+                {% else %}
+                <div class="placeholder">
+                    ← 输入公式后点击生成按钮
+                </div>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 liqian_liukaining. All rights reserved.</p>
+    </footer>
+</body>
+</html>

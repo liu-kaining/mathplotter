@@ -1,0 +1,106 @@
+/* static/css/style.css */
+/*
+MathPlotter 样式表
+作者: liqian_liukaining
+日期: 2025-01-28
+*/
+
+:root {
+    --primary-color: #007bff;
+    --error-color: #dc3545;
+    --background-light: #f8f9fa;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--background-light);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.control-panel {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+button {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.visualization {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.plot-area {
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+}
+
+.plot-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.error-box {
+    color: var(--error-color);
+    padding: 1rem;
+    margin: 1rem 0;
+    border: 1px solid var(--error-color);
+    border-radius: 4px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .plot-area {
+        height: 400px;
+    }
+}

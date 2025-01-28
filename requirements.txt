@@ -1,0 +1,11 @@
+# MathPlotter 项目依赖
+# 版本要求
+# 作者: liqian_liukaining
+# 日期: 2025-01-28
+
+# requirements.txt (适配 Python 3.9)
+Flask==2.3.2
+numpy==1.24.4
+matplotlib==3.7.3
+sympy==1.12
+Werkzeug==2.3.7
